@@ -5,6 +5,9 @@ on:
       - opened
       - synchronize
       - reopened
+    branches:
+      - main
+      - release/**
   push:
     branches:
       - main
