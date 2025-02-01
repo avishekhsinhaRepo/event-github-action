@@ -45,5 +45,7 @@ jobs:
           name: website
       - name: List Generated Files
         run: ls
+      - name: OutPut JS files
+        run: echo "${{needs.build.outputs.result}}""
       - name: Deploy
-        run: echo ${{needs.build.outputs.result}}
+        run: echo "Deploying..."
