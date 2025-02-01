@@ -18,8 +18,11 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{steps.checkout.outputs.result}}
     steps:
       - name: Get code
+        id: checkout
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
@@ -41,4 +44,4 @@ jobs:
       - name: List Generated Files
         run: ls
       - name: Deploy
-        run: echo "Deploying..."
+        run: echo "Deploying...${{needs.build.outputs.result}}"
