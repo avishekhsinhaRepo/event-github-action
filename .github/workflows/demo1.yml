@@ -19,7 +19,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      result: ${{steps.checkout.outputs.result}}
+      result: ${{steps.print-message.outputs.result}}
     steps:
       - name: Set Print Message
         id: print-message
