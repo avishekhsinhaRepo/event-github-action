@@ -21,9 +21,6 @@ jobs:
     outputs:
       result: ${{steps.print-message.outputs.result}}
     steps:
-      - name: Set Print Message
-        id: print-message
-        run: echo "result=Hello from Job 1" >> $GITHUB_OUTPUT
       - name: Get code
         uses: actions/checkout@v4
       - name: Install dependencies
@@ -35,6 +32,9 @@ jobs:
         with: 
           name: website
           path: dist
+      - name: Print JS filename
+        id: print-js-files
+        run: find dist/assets/*.js -type f -execdir echo '{}' ';' >> $GITHUB_OUTPUT
   deploy:
     needs: build
     runs-on: ubuntu-latest
