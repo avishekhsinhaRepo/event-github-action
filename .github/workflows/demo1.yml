@@ -19,7 +19,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      result: ${{steps.print-js-files.outputs.result}}
+      result: ${{steps.publish.outputs.script-files}}
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -32,9 +32,9 @@ jobs:
         with: 
           name: website
           path: dist
-      - name: Print JS filename
-        id: print-js-files
-        run: find dist/assets/*.js -type f -execdir echo '{}' ';' >> $GITHUB_OUTPUT
+      - name: Publish JS filename
+        id: publish
+        run:  echo find dist/assets/*.js -type f -execdir echo 'script-files={}'  >> $GITHUB_OUTPUT ';'
   deploy:
     needs: build
     runs-on: ubuntu-latest
