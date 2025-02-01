@@ -19,7 +19,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      result: ${{steps.print-message.outputs.result}}
+      result: ${{steps.print-js-files.outputs.result}}
     steps:
       - name: Get code
         uses: actions/checkout@v4
