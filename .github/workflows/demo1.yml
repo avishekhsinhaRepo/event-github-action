@@ -46,4 +46,4 @@ jobs:
       - name: List Generated Files
         run: ls
       - name: Deploy
-        run: echo "Deploying...${{needs.build.outputs.result}}"
+        run: echo ${{needs.build.outputs.result}}
