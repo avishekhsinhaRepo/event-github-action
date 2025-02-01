@@ -21,8 +21,10 @@ jobs:
     outputs:
       result: ${{steps.checkout.outputs.result}}
     steps:
+      - name: Set Print Message
+        id: print-message
+        run: echo "result=Hello from Job 1" >> $GITHUB_OUTPUT
       - name: Get code
-        id: checkout
         uses: actions/checkout@v4
       - name: Install dependencies
         run: npm ci
